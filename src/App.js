@@ -30,7 +30,7 @@ function App() {
   // }
   const getCurrencies = () => {
     fetch(url)
-      .then((responce) => responce.json())
+      .then((response) => response.json())
       .then((data) => {
         const currencies = data[0].rates.filter((element) =>
           availableCurrency.includes(element.code)
