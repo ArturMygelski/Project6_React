@@ -15,7 +15,7 @@ function App() {
   const [resultValue, setResultValue] = useState(0);
 
   const showInputVal = (e) => {
-    if (inputValue < 0) {
+    if (InputValue < 0) {
       alert("Brak możliwości wpisana liczb ujemnych");
     } else {
       setInputValue(e.target.value);
@@ -42,7 +42,7 @@ function App() {
         const mid = currencies.find(
           (element) => element.code === selectValue
         ).mid;
-        setResultValue(Number.parseFloat(inputValue * mid).toFixed(2));
+        setResultValue(Number.parseFloat(InputValue * mid).toFixed(2));
       })
 
       .catch((err) => console.log(err));
