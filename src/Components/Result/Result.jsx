@@ -1,7 +1,9 @@
 const Result = ({ calculate }) => {
   return (
     <>
-      <p id="result" value={calculate}></p>
+      <p id="result" readOnly>
+        {calculate}{" "}
+      </p>
       <span id="resultCurrency">PLN</span>
     </>
   );
