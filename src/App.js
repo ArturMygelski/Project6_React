@@ -10,7 +10,7 @@ const availableCurrency = ["EUR", "USD", "CZK"];
 const url = "https://api.nbp.pl/api/exchangerates/tables/A/";
 
 function App() {
-  const [inputValue, setInputValue] = useState(0);
+  const [InputValue, setInputValue] = useState(0);
   const [selectValue, setSelectValue] = useState("EUR");
   const [resultValue, setResultValue] = useState(0);
 
@@ -25,13 +25,6 @@ function App() {
     setSelectValue(e.target.value);
   };
 
-  // function updateValue(e) {
-  //   if (input.value < 0) {
-  //     alert("Brak możliwości wpisana liczb ujemnych");
-  //   } else {
-  //     getValueData();
-  //   }
-  // }
   const getCurrencies = () => {
     fetch(url)
       .then((response) => response.json())
