@@ -15,7 +15,11 @@ function App() {
   const [resultValue, setResultValue] = useState(0);
 
   const showInputVal = (e) => {
-    setInputValue(e.target.value);
+    if (inputValue < 0) {
+      alert("Brak możliwości wpisana liczb ujemnych");
+    } else {
+      setInputValue(e.target.value);
+    }
   };
   const showSelectVal = (e) => {
     setSelectValue(e.target.value);
@@ -48,7 +52,7 @@ function App() {
     <>
       <Logo></Logo>
       <div className="container">
-        <Input inputValue={showInputVal}></Input>
+        <Input InputValue={showInputVal}></Input>
         <Select selectedValue={selectValue} onChange={showSelectVal}></Select>
         <Button calculate={getCurrencies}></Button>
         <span>to</span>

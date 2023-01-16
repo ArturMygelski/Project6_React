@@ -1,7 +1,7 @@
 const Result = ({ calculate }) => {
   return (
     <>
-      <input id="result" value={calculate}></input>
+      <p id="result" value={calculate}></p>
       <span id="resultCurrency">PLN</span>
     </>
   );
