@@ -6,21 +6,23 @@ import Result from "./Components/Result/Result";
 import Select from "./Components/Select/Select";
 import { useState } from "react";
 
-const availableCurrency = ["EUR", "USD", "CZK"];
+const availableCurrency = ["EUR", "USD", "CZK", "CHF"];
 const url = "https://api.nbp.pl/api/exchangerates/tables/A/";
 
 function App() {
-  const [InputValue, setInputValue] = useState(0);
+  const [inputValue, setInputValue] = useState(0);
   const [selectValue, setSelectValue] = useState("EUR");
   const [resultValue, setResultValue] = useState(0);
 
   const showInputVal = (e) => {
-    if (InputValue < 0) {
-      alert("Brak możliwości wpisana liczb ujemnych");
-    } else {
-      setInputValue(e.target.value);
+    setInputValue(e.target.value);
+  };
+  const preventMinus = (e) => {
+    if (/[-]/.test(e.key)) {
+      e.preventDefault();
     }
   };
+
   const showSelectVal = (e) => {
     setSelectValue(e.target.value);
   };
@@ -35,7 +37,7 @@ function App() {
         const mid = currencies.find(
           (element) => element.code === selectValue
         ).mid;
-        setResultValue(Number.parseFloat(InputValue * mid).toFixed(2));
+        setResultValue(Number.parseFloat(inputValue * mid).toFixed(2));
       })
 
       .catch((err) => console.log(err));
@@ -43,9 +45,9 @@ function App() {
 
   return (
     <>
-      <Logo></Logo>
+      <Logo />
       <div className="container">
-        <Input InputValue={showInputVal}></Input>
+        <Input inputValue={showInputVal} preventValue={preventMinus}></Input>
         <Select selectedValue={selectValue} onChange={showSelectVal}></Select>
         <Button calculate={getCurrencies}></Button>
         <span>to</span>

@@ -1,11 +1,12 @@
-const Input = ({ InputValue }) => {
+const Input = ({ inputValue, preventValue }) => {
   return (
     <input
       type="number"
       id="input"
       min="0"
       placeholder="Wpisz kwote"
-      onInput={InputValue}
+      onInput={inputValue}
+      onKeyDown={preventValue}
     />
   );
 };
